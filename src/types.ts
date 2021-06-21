@@ -9,8 +9,8 @@ export type Country = {
 };
 
 export type AppContextType = {
-  value: Country[];
-  travel: Country[];
+  countries: Country[];
+  visitedCountries: Country[];
   updateTravel: (country: Country) => void;
   resetTravel: () => void;
 };

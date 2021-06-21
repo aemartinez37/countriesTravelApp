@@ -5,8 +5,8 @@ import { Form, Button } from "react-bootstrap";
 
 export const SubscribeManualForm: React.FC = () => {
   const appContext = useAppContext();
-  const travel = appContext.travel;
-  const countries = appContext.value;
+  const travel = appContext.visitedCountries;
+  const countries = appContext.countries;
   const SUBSCRIBERS = "SUBSCRIBERS";
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);

@@ -45,7 +45,7 @@ export const CountryInfo = () => {
           </Card.Text>
         </Card.Body>
       </Card>
-      {/* <div>{appContext.travel}</div> */}
+      {/* <div>{appContext.visitedCountries}</div> */}
     </div>
     //   <Link to={"/"}> &#8592; Back </Link>
   );

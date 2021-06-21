@@ -3,8 +3,8 @@ import { Country, AppContextType } from "../types";
 import { CountriesApi } from "../services/ApiCountries";
 
 const appCtxt = createContext<AppContextType>({
-  value: [],
-  travel: [],
+  countries: [],
+  visitedCountries: [],
   updateTravel: () => {},
   resetTravel: () => {},
 });
@@ -35,10 +35,16 @@ const ContextProvider: React.FC = ({ children }) => {
   };
 
   const context: AppContextType = {
-    value: countries,
-    travel: visitedCountries,
-    updateTravel: (country: Country) => trip(country),
-    resetTravel: () => resetTrip(),
+    countries,
+    visitedCountries,
+    updateTravel(country: Country) {
+      console.log("Added country to trip!");
+      setVisitedCountries(visitedCountries.concat([country]));
+    },
+    resetTravel() {
+      console.log("Reset travel!");
+      setVisitedCountries([]);
+    },
   };
 
   return <appCtxt.Provider value={context}>{children}</appCtxt.Provider>;

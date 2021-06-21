@@ -5,7 +5,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 
 export const SubscribeLibForm: React.FC = () => {
   const appContext = useAppContext();
-  const travel = appContext.travel;
+  const travel = appContext.visitedCountries;
   const SUBSCRIBERS = "SUBSCRIBERS";
 
   const handleSubmit = (values: SubscriptionType) => {

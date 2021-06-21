@@ -22,19 +22,19 @@ const CountryElem = ({ name, alpha3Code, flag }: Country) => {
 
 export const Countries: React.FC = () => {
   const appContext = useAppContext();
-  const travel = appContext.travel;
+  const travel = appContext.visitedCountries;
   const currentCountry = travel.length > 0 ? travel.slice(-1)[0] : null;
   const countriesList =
     travel.length > 0
       ? (currentCountry!.borders
-          ? appContext.value.filter((country) =>
+          ? appContext.countries.filter((country) =>
               currentCountry!.borders.includes(country.alpha3Code)
             )
           : []
         ).filter((country) => {
           return !travel.map((x) => x.alpha3Code).includes(country.alpha3Code);
         })
-      : appContext.value;
+      : appContext.countries;
 
   if (travel.length > 0) {
     if (countriesList.length == 0) {
