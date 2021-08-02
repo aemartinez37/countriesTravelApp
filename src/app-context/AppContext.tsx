@@ -7,6 +7,9 @@ const appCtxt = createContext<AppContextType>({
   visitedCountries: [],
   updateTravel: () => {},
   resetTravel: () => {},
+  get currentCountry() {
+    return null;
+  },
 });
 
 const ContextProvider: React.FC = ({ children }) => {
@@ -44,6 +47,9 @@ const ContextProvider: React.FC = ({ children }) => {
     resetTravel() {
       console.log("Reset travel!");
       setVisitedCountries([]);
+    },
+    get currentCountry() {
+      return visitedCountries.length > 0 ? visitedCountries.slice(-1)[0] : null;
     },
   };
 

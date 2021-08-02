@@ -8,6 +8,7 @@ import {
   StyledCountryName,
 } from "./styled/StyledComponents";
 import { useAppContext } from "../app-context/AppContext";
+import { travelAvailableCountries } from "../utils";
 
 const CountryElem = ({ name, alpha3Code, flag }: Country) => {
   return (
@@ -23,18 +24,9 @@ const CountryElem = ({ name, alpha3Code, flag }: Country) => {
 export const Countries: React.FC = () => {
   const appContext = useAppContext();
   const travel = appContext.visitedCountries;
-  const currentCountry = travel.length > 0 ? travel.slice(-1)[0] : null;
-  const countriesList =
-    travel.length > 0
-      ? (currentCountry!.borders
-          ? appContext.countries.filter((country) =>
-              currentCountry!.borders.includes(country.alpha3Code)
-            )
-          : []
-        ).filter((country) => {
-          return !travel.map((x) => x.alpha3Code).includes(country.alpha3Code);
-        })
-      : appContext.countries;
+  const bindTravelAvailableCountries =
+    travelAvailableCountries.bind(appContext);
+  const countriesList = bindTravelAvailableCountries(appContext.countries);
 
   if (travel.length > 0) {
     if (countriesList.length == 0) {

@@ -13,6 +13,7 @@ export type AppContextType = {
   visitedCountries: Country[];
   updateTravel: (country: Country) => void;
   resetTravel: () => void;
+  currentCountry: Country | null;
 };
 
 export type SubscriptionType = {
