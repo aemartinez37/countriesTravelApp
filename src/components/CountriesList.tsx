@@ -9,6 +9,7 @@ import {
 } from "./styled/StyledComponents";
 import { useAppContext } from "../app-context/AppContext";
 import { travelAvailableCountries } from "../utils";
+import { didacticBind } from "../didacticBind";
 
 const CountryElem = ({ name, alpha3Code, flags }: Country) => {
   return (
@@ -24,8 +25,16 @@ const CountryElem = ({ name, alpha3Code, flags }: Country) => {
 export const Countries: React.FC = () => {
   const appContext = useAppContext();
   const travel = appContext.visitedCountries;
-  const bindTravelAvailableCountries =
-    travelAvailableCountries.bind(appContext);
+
+  //Using ES5 `bind` function:
+  /*const bindTravelAvailableCountries =
+    travelAvailableCountries.bind(appContext);*/
+
+  //Using `didacticBind` function created for professional development purposes
+  const bindTravelAvailableCountries = didacticBind(
+    travelAvailableCountries,
+    appContext
+  );
   const countriesList = bindTravelAvailableCountries(appContext.countries);
 
   if (travel.length > 0) {
