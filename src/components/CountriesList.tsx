@@ -10,11 +10,11 @@ import {
 import { useAppContext } from "../app-context/AppContext";
 import { travelAvailableCountries } from "../utils";
 
-const CountryElem = ({ name, alpha3Code, flag }: Country) => {
+const CountryElem = ({ name, alpha3Code, flags }: Country) => {
   return (
     <Link to={`/${alpha3Code}`}>
       <StyledCountry id={alpha3Code.toString()}>
-        <StyledCountryImage src={flag} alt={`${name} flag`} />
+        <StyledCountryImage src={flags[0]} alt={`${name} flag`} />
         <StyledCountryName>{name}</StyledCountryName>
       </StyledCountry>
     </Link>

@@ -5,7 +5,7 @@ export type Country = {
   region: string;
   subregion: string;
   borders: string[];
-  flag: string;
+  flags: string[];
 };
 
 export type AppContextType = {

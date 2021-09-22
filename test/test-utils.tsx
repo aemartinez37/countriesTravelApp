@@ -13,7 +13,7 @@ const country = {
   region: "Americas",
   subregion: "South America",
   borders: ["COL", "PER"],
-  flag: "https://restcountries.eu/data/ecu.svg",
+  flags: ["https://restcountries.eu/data/ecu.svg"],
 };
 
 const countriesListMock = rest.get(

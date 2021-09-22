@@ -30,7 +30,7 @@ export const CountryInfo = () => {
   return (
     <div style={{ textAlign: "center" }}>
       <Card style={{ width: "60rem", margin: "auto" }}>
-        <Card.Img variant="top" src={country.flag} alt={country.name} />
+        <Card.Img variant="top" src={country.flags[0]} alt={country.name} />
         <Card.Body>
           <Card.Title>{country.name}</Card.Title>
           <Card.Text style={{ textAlign: "left" }}>
