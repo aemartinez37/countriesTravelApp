@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Country } from "../types";
 import { useAppContext } from "../app-context/AppContext";
 import { Form, Button } from "react-bootstrap";
+import { encrypt } from "../services/EncryptionService";
 
 export const SubscribeManualForm: React.FC = () => {
   const appContext = useAppContext();
@@ -35,7 +36,8 @@ export const SubscribeManualForm: React.FC = () => {
           }, ""),
         },
       ]);
-      sessionStorage.setItem(SUBSCRIBERS, JSON.stringify(subscribersObj));
+      const encryptedSubscribersObj = encrypt(JSON.stringify(subscribersObj));
+      sessionStorage.setItem(SUBSCRIBERS, encryptedSubscribersObj);
       alert("Submited Ok!");
       window.location.href = "/";
     }

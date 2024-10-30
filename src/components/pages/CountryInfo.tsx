@@ -5,6 +5,7 @@ import { CountriesApi } from "../../services/ApiCountries";
 import { Card } from "react-bootstrap";
 import { useAppContext } from "../../app-context/AppContext";
 import { Countries } from "../CountriesList";
+import { encrypt } from "../../services/EncryptionService";
 
 export const CountryInfo = () => {
   const appContext = useAppContext();
@@ -14,7 +15,8 @@ export const CountryInfo = () => {
   useEffect(() => {
     CountriesApi.getCountry(countryAlpha3Code)
       .then((data: Country) => {
-        appContext.updateTravel(data);
+        const encryptedData = encrypt(JSON.stringify(data));
+        appContext.updateTravel(JSON.parse(encryptedData));
         setCountry(data);
       })
       .catch((err) => {
