@@ -2,6 +2,7 @@ import React from "react";
 import { SubscriptionType } from "../types";
 import { useAppContext } from "../app-context/AppContext";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { encrypt } from "../services/EncryptionService";
 
 export const SubscribeLibForm: React.FC = () => {
   const appContext = useAppContext();
@@ -21,7 +22,8 @@ export const SubscribeLibForm: React.FC = () => {
         }, ""),
       },
     ]);
-    sessionStorage.setItem(SUBSCRIBERS, JSON.stringify(subscribersObj));
+    const encryptedSubscribersObj = encrypt(JSON.stringify(subscribersObj));
+    sessionStorage.setItem(SUBSCRIBERS, encryptedSubscribersObj);
     alert("Submited Ok!");
     window.location.href = "/";
   };

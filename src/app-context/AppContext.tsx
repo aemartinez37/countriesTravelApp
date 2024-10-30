@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { Country, AppContextType } from "../types";
 import { CountriesApi } from "../services/ApiCountries";
+import { encrypt, decrypt } from "../services/EncryptionService";
 
 const appCtxt = createContext<AppContextType>({
   countries: [],
@@ -29,7 +30,8 @@ const ContextProvider: React.FC = ({ children }) => {
 
   const trip = (country: Country) => {
     console.log("Added country to trip!");
-    setVisitedCountries(visitedCountries.concat([country]));
+    const encryptedCountry = encrypt(JSON.stringify(country));
+    setVisitedCountries(visitedCountries.concat([JSON.parse(decrypt(encryptedCountry))]));
   };
 
   const resetTrip = () => {
@@ -42,7 +44,8 @@ const ContextProvider: React.FC = ({ children }) => {
     visitedCountries,
     updateTravel(country: Country) {
       console.log("Added country to trip!");
-      setVisitedCountries(visitedCountries.concat([country]));
+      const encryptedCountry = encrypt(JSON.stringify(country));
+      setVisitedCountries(visitedCountries.concat([JSON.parse(decrypt(encryptedCountry))]));
     },
     resetTravel() {
       console.log("Reset travel!");
