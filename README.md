@@ -29,4 +29,4 @@ npm run test
 
 ## Countries API
 
-You can find out more about the API in the following link: [https://restcountries.eu/](https://restcountries.eu/)
+You can find out more about the API here: [https://restcountries.eu/](https://restcountries.eu/)
